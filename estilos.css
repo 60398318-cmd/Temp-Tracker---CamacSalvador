@@ -783,3 +783,23 @@ button:active {
         transition: none !important;
     }
 }
+/* =========================================================
+   BOTON VOLVER AL PORTAFOLIO
+========================================================= */
+
+.btn-portafolio {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #ffcc00;
+    color: #101820;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 16px;
+    font-size: 15px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-portafolio:hover {
+    background: #e6b800;
+    transform: translateY(-2px);
+}
