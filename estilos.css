@@ -245,7 +245,7 @@ input:focus {
 
     box-shadow:
         0 0 0 4px rgba(116, 182, 211, 0.1),
-        0 8px 25px rgba(0,0,0,0.12);
+        0 8px 25px rgba(139, 135, 135, 0.12);
 }
 
 
@@ -393,7 +393,7 @@ button:active {
 .ubicacion p {
     font-size: 13px;
 
-    color: rgba(255,255,255,0.52);
+    color: rgba(78, 75, 75, 0.52);
 
     letter-spacing: 0.3px;
 }
