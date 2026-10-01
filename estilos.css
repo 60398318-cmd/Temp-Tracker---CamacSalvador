@@ -803,3 +803,20 @@ button:active {
     background: #e6b800;
     transform: translateY(-2px);
 }
+.btn-volver {
+    margin-top: 15px;
+    padding: 12px 24px;
+    background: #fcc21b;
+    color: #101820;
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-volver:hover {
+    background: #e5b018;
+    transform: translateY(-2px);
+}
