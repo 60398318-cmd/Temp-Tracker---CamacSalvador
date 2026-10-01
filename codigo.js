@@ -1,6 +1,6 @@
 // ========================================
 // TEMPTRACKER
-// Tu companero climatico
+// Tu compañero climático
 // ========================================
 
 // ========================================
@@ -48,25 +48,24 @@ async function buscarClima() {
     return;
   }
 
-  mensaje.textContent = "🔄 Buscando información del clima...";
+  mensaje.textContent = "🔄 Buscando informacion del clima...";
 
   try {
     // ========================================
-    // URL DE WEATHERAPI
+    // URL DE WEATHERAPI (ORDEN CORRECTO DE PARAMETROS)
     // ========================================
-    const apiClimaActual = `https://api.weatherapi.com/v1/current.json?q=${encodeURIComponent(ciudad)}&lang=${idioma}&key=${claveApi}`;
+    const apiClimaActual = `https://api.weatherapi.com/v1/current.json?key=${claveApi}&q=${encodeURIComponent(ciudad)}&lang=${idioma}`;
 
     const response = await fetch(apiClimaActual);
 
-    // Si la API devuelve un error
+    // Si la API devuelve un error HTTP
     if (!response.ok) {
       throw new Error("No se pudo obtener la informacion.");
     }
 
     const data = await response.json();
 
-    // WeatherAPI puede devolver un error
-    // aunque HTTP sea correcto
+    // WeatherAPI puede devolver un objeto de error interno
     if (data.error) {
       throw new Error(data.error.message);
     }
@@ -83,7 +82,9 @@ async function buscarClima() {
 
     mensaje.textContent = "❌ No se encontro la ciudad o ocurrio un error.";
 
-    climaInfo.style.display = "none";
+    if (climaInfo) {
+      climaInfo.style.display = "none";
+    }
   }
 }
 
@@ -93,90 +94,71 @@ async function buscarClima() {
 
 function mostrarClima(data) {
   // Mostrar el contenedor
-  climaInfo.style.display = "block";
+  if (climaInfo) {
+    climaInfo.style.display = "block";
+  }
 
   // ========================================
-  // UBICACION
+  // UBICACION Y DATOS
   // ========================================
 
-  ciudadElemento.textContent = data.location.name;
-
-  paisElemento.textContent = `${data.location.region}, ${data.location.country}`;
-
-  // ========================================
-  // TEMPERATURA
-  // ========================================
-
-  temperaturaElemento.textContent = `${Math.round(data.current.temp_c)}°C`;
-
-  // ========================================
-  // CONDICION
-  // ========================================
-
-  condicionElemento.textContent = data.current.condition.text;
+  if (ciudadElemento) ciudadElemento.textContent = data.location.name;
+  if (paisElemento)
+    paisElemento.textContent = `${data.location.region}, ${data.location.country}`;
+  if (temperaturaElemento)
+    temperaturaElemento.textContent = `${Math.round(data.current.temp_c)}°C`;
+  if (condicionElemento)
+    condicionElemento.textContent = data.current.condition.text;
 
   // ========================================
   // ICONO
   // ========================================
 
-  let icono = data.current.condition.icon;
-
-  // WeatherAPI normalmente devuelve //cdn...
-  // Lo convertimos en HTTPS
-
-  if (icono.startsWith("//")) {
-    icono = "https:" + icono;
+  if (iconoClima) {
+    let icono = data.current.condition.icon;
+    if (icono.startsWith("//")) {
+      icono = "https:" + icono;
+    }
+    iconoClima.src = icono;
+    iconoClima.alt = data.current.condition.text;
   }
 
-  iconoClima.src = icono;
-  iconoClima.alt = data.current.condition.text;
-
   // ========================================
-  // HUMEDAD
+  // DETALLES ADICIONALES
   // ========================================
 
-  humedadElemento.textContent = `${data.current.humidity}%`;
-
-  // ========================================
-  // VIENTO
-  // ========================================
-
-  vientoElemento.textContent = `${data.current.wind_kph} km/h`;
-
-  // ========================================
-  // SENSACION TERMICA
-  // ========================================
-
-  sensacionElemento.textContent = `${Math.round(data.current.feelslike_c)}°C`;
-
-  // ========================================
-  // HORA
-  // ========================================
-
-  horaElemento.textContent = data.location.localtime;
+  if (humedadElemento)
+    humedadElemento.textContent = `${data.current.humidity}%`;
+  if (vientoElemento)
+    vientoElemento.textContent = `${data.current.wind_kph} km/h`;
+  if (sensacionElemento)
+    sensacionElemento.textContent = `${Math.round(data.current.feelslike_c)}°C`;
+  if (horaElemento) horaElemento.textContent = data.location.localtime;
 }
 
 // ========================================
-// EVENTO DEL BOTON
+// EVENTOS
 // ========================================
 
-botonBuscar.addEventListener("click", buscarClima);
+if (botonBuscar) {
+  botonBuscar.addEventListener("click", buscarClima);
+}
 
-// ========================================
-// BUSCAR PRESIONANDO ENTER
-// ========================================
-
-inputCiudad.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    buscarClima();
-  }
-});
+if (inputCiudad) {
+  inputCiudad.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      buscarClima();
+    }
+  });
+}
 
 // ========================================
 // CARGAR CLIMA INICIAL
 // ========================================
 
 window.addEventListener("load", function () {
-  inputCiudad.value = "Huancayo";
-  buscarClima();
+  if (inputCiudad) {
+    inputCiudad.value = "Huancayo";
+    buscarClima();
+  }
 });

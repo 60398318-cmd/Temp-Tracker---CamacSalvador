@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>clima</title>
-
+    <title>TempTracker - Clima</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 
@@ -56,7 +54,8 @@
             <div class="datos-clima">
 
                 <div class="dato">
-                    <img src="/imagenes/humedad.png" alt="Humedad">
+                    <!-- Corrección: Se quitó la / inicial -->
+                    <img src="imagenes/humedad.png" alt="Humedad">
                     <div>
                         <span>Humedad</span>
                         <strong id="humedad">-- %</strong>
@@ -64,7 +63,8 @@
                 </div>
 
                 <div class="dato">
-                    <img src="/imagenes/viento.png" alt="Viento">
+                    <!-- Corrección: Se quitó la / inicial -->
+                    <img src="imagenes/viento.png" alt="Viento">
                     <div>
                         <span>Viento</span>
                         <strong id="viento">-- km/h</strong>
@@ -72,7 +72,8 @@
                 </div>
 
                 <div class="dato">
-                    <span class="emoji-dato"><img src="/imagenes/termometro.png" alt="termometro"></span>
+                    <!-- Corrección: Se quitó la / inicial -->
+                    <span class="emoji-dato"><img src="imagenes/termometro.png" alt="termometro"></span>
                     <div>
                         <span>Sensación</span>
                         <strong id="sensacion">--°C</strong>
@@ -87,10 +88,18 @@
             </p>
 
         </div>
-            <br>
-            <br>
+        
+        <br>
+        <br>
 
-            <button onclick="window.location.href='portafolio-trujillo/Trujillo.html'">
-                Portafolio Camac Salvador
-            </button>
+        <!-- Corrección: Enlace directo a tu portafolio en GitHub Pages -->
+        <button onclick="window.location.href='https://60398318-cmd.github.io/Mi_Portafolio.CamacSalvador/'">
+            ← Volver al Portafolio Camac Salvador
+        </button>
 
+    </div>
+
+    <!-- Corrección: Se agrega la etiqueta del script para activar la API -->
+    <script src="codigo.js"></script>
+</body>
+</html>
