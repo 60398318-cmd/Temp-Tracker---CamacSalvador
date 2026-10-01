@@ -820,3 +820,9 @@ button:active {
     background: #e5b018;
     transform: translateY(-2px);
 }
+.tarjeta-ploma {
+    background-color: rgba(255, 255, 255, 0.08); /* Plomo/Blanco semitransparente */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Borde sutil plomo/blanco */
+    color: #f1f5f9; /* Texto claro */
+}
