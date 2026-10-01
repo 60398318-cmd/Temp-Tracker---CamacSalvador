@@ -1,0 +1,785 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: "Inter", Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 45px 20px;
+
+    color: #ffffff;
+
+    overflow-x: hidden;
+
+    /* Cielo nocturno */
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(69, 180, 255, 0.30),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(122, 92, 255, 0.20),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(0, 196, 255, 0.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #061421 0%,
+            #09283d 45%,
+            #0b4966 100%
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   LUCES DECORATIVAS
+========================================================= */
+
+body::before,
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(80px);
+
+    opacity: 0.35;
+
+    z-index: -1;
+}
+
+body::before {
+    top: -120px;
+    left: -100px;
+
+    background: #27b8ff;
+}
+
+body::after {
+    right: -120px;
+    bottom: -100px;
+
+    background: #4b70ff;
+}
+
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.contenedor {
+    position: relative;
+
+    width: 100%;
+    max-width: 650px;
+
+    padding: 38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.13),
+            rgba(255, 255, 255, 0.045)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    border-radius: 32px;
+
+    box-shadow:
+        0 35px 80px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    text-align: center;
+
+    overflow: hidden;
+
+    animation: aparecer 0.7s ease;
+}
+
+
+/* brillo superior */
+
+.contenedor::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 12%;
+
+    width: 76%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.45),
+        transparent
+    );
+}
+
+
+/* =========================================================
+   TITULO
+========================================================= */
+
+h1 {
+    position: relative;
+
+    font-size: 43px;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 7px;
+
+    background: linear-gradient(
+        120deg,
+        #ffffff,
+        #d9f6ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    text-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.subtitulo {
+    margin-bottom: 32px;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.4px;
+
+    color: rgba(255,255,255,0.58);
+}
+
+
+/* =========================================================
+   BUSCADOR
+========================================================= */
+
+.buscador {
+    display: flex;
+
+    width: 100%;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 54px;
+
+    padding: 0 18px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    outline: none;
+
+    border-radius: 16px;
+
+    background: rgba(0, 0, 0, 0.18);
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    transition:
+        0.25s ease;
+}
+
+input::placeholder {
+    color: rgba(255,255,255,0.42);
+}
+
+input:focus {
+    border-color: rgba(91, 207, 255, 0.7);
+
+    background: rgba(0, 0, 0, 0.25);
+
+    box-shadow:
+        0 0 0 4px rgba(56,189,248,0.10),
+        0 8px 25px rgba(0,0,0,0.12);
+}
+
+
+/* =========================================================
+   BOTON
+========================================================= */
+
+button {
+    height: 54px;
+
+    padding: 0 24px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd166,
+            #f4b942
+        );
+
+    color: #17202a;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(244,185,66,0.18);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 13px 30px rgba(244,185,66,0.28);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================================
+   MENSAJE
+========================================================= */
+
+.mensaje {
+    min-height: 22px;
+
+    margin-bottom: 10px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #ffd166;
+}
+
+
+/* =========================================================
+   TARJETA DEL CLIMA
+========================================================= */
+
+.clima-info {
+    position: relative;
+
+    margin-top: 12px;
+
+    padding: 32px 25px 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.105),
+            rgba(255,255,255,0.035)
+        );
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    border-radius: 26px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.07),
+        0 15px 35px rgba(0,0,0,0.12);
+
+    overflow: hidden;
+}
+
+
+/* iluminación de la tarjeta */
+
+.clima-info::before {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    top: -90px;
+    right: -60px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.08);
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   UBICACION
+========================================================= */
+
+.ubicacion {
+    position: relative;
+}
+
+.ubicacion h2 {
+    font-size: 30px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.8px;
+
+    margin-bottom: 7px;
+}
+
+.ubicacion p {
+    font-size: 13px;
+
+    color: rgba(255,255,255,0.52);
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   CLIMA PRINCIPAL
+========================================================= */
+
+.clima-principal {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin: 30px 0;
+}
+
+#icono-clima {
+    width: 125px;
+    height: 125px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 12px 18px rgba(0,0,0,0.30)
+        );
+
+    animation:
+        flotando 4s ease-in-out infinite;
+}
+
+.temperatura {
+    font-size: 66px;
+
+    font-weight: 800;
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+
+    color: #ffffff;
+}
+
+.condicion {
+    margin-top: 11px;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    text-transform: capitalize;
+
+    color: rgba(255,255,255,0.70);
+}
+
+
+/* =========================================================
+   DATOS DEL CLIMA
+========================================================= */
+
+.datos-clima {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 28px;
+}
+
+.dato {
+    position: relative;
+
+    min-height: 125px;
+
+    padding: 17px 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    border:
+        1px solid rgba(255,255,255,0.075);
+
+    border-radius: 19px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.dato::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 20%;
+
+    width: 60%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.18),
+            transparent
+        );
+}
+
+.dato:hover {
+    transform: translateY(-4px);
+
+    background:
+        rgba(255,255,255,0.085);
+
+    border-color:
+        rgba(255,255,255,0.14);
+}
+
+.dato img {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+
+    opacity: 0.92;
+}
+
+.emoji-dato {
+    font-size: 30px;
+
+    line-height: 1;
+}
+
+.dato span {
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.3px;
+
+    color: rgba(255,255,255,0.46);
+}
+
+.dato strong {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   ACTUALIZACION
+========================================================= */
+
+.actualizacion {
+    margin-top: 24px;
+
+    font-size: 11px;
+
+    color: rgba(255,255,255,0.35);
+
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes flotando {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 25px 15px;
+    }
+
+    .contenedor {
+        padding: 32px 22px;
+    }
+
+    h1 {
+        font-size: 37px;
+    }
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .contenedor {
+        width: 100%;
+
+        margin: 10px 0;
+
+        padding: 27px 15px;
+
+        border-radius: 25px;
+    }
+
+    h1 {
+        font-size: 31px;
+
+        letter-spacing: -1.3px;
+    }
+
+    .subtitulo {
+        font-size: 13px;
+
+        margin-bottom: 25px;
+    }
+
+    .buscador {
+        flex-direction: column;
+
+        gap: 9px;
+    }
+
+    input,
+    button {
+        width: 100%;
+    }
+
+    .clima-info {
+        padding: 27px 13px 18px;
+
+        border-radius: 22px;
+    }
+
+    .ubicacion h2 {
+        font-size: 26px;
+    }
+
+    .clima-principal {
+        flex-direction: column;
+
+        gap: 10px;
+
+        margin: 27px 0;
+    }
+
+    #icono-clima {
+        width: 105px;
+        height: 105px;
+    }
+
+    .temperatura {
+        font-size: 54px;
+
+        letter-spacing: -3px;
+    }
+
+    .condicion {
+        font-size: 16px;
+    }
+
+    .datos-clima {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+    }
+
+    .dato {
+        min-height: 78px;
+
+        flex-direction: row;
+
+        justify-content: flex-start;
+
+        padding: 12px 18px;
+
+        text-align: left;
+    }
+
+    .dato strong {
+        margin-left: auto;
+    }
+}
+
+
+/* =========================================================
+   CELULAR PEQUENO
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .contenedor {
+        padding: 23px 12px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .temperatura {
+        font-size: 48px;
+    }
+
+    .clima-info {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+
+/* =========================================================
+   REDUCIR ANIMACIONES SI EL USUARIO LO PREFIERE
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+
+        transition: none !important;
+    }
+}

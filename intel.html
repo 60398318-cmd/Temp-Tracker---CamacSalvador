@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>clima</title>
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>TempTracker</h1>
+        <p class="subtitulo">Tu compañero climático</p>
+
+        <div class="buscador">
+            <input
+                type="text"
+                id="input-ciudad"
+                placeholder="Escribe una ciudad..."
+                autocomplete="off"
+            >
+
+            <button id="btn-buscar">
+                🔍 Buscar
+            </button>
+        </div>
+
+        <p id="mensaje" class="mensaje"></p>
+
+        <div class="clima-info" id="clima-info">
+
+            <div class="ubicacion">
+                <h2 id="ciudad">Huancayo</h2>
+                <p id="pais">Perú</p>
+            </div>
+
+            <div class="clima-principal">
+
+                <img
+                    id="icono-clima"
+                    src=""
+                    alt="Icono del clima"
+                >
+
+                <div>
+                    <p id="temperatura" class="temperatura">--°C</p>
+                    <p id="condicion" class="condicion">--</p>
+                </div>
+
+            </div>
+
+            <div class="datos-clima">
+
+                <div class="dato">
+                    <img src="/imagenes/humedad.png" alt="Humedad">
+                    <div>
+                        <span>Humedad</span>
+                        <strong id="humedad">-- %</strong>
+                    </div>
+                </div>
+
+                <div class="dato">
+                    <img src="/imagenes/viento.png" alt="Viento">
+                    <div>
+                        <span>Viento</span>
+                        <strong id="viento">-- km/h</strong>
+                    </div>
+                </div>
+
+                <div class="dato">
+                    <span class="emoji-dato"><img src="/imagenes/termometro.png" alt="termometro"></span>
+                    <div>
+                        <span>Sensación</span>
+                        <strong id="sensacion">--°C</strong>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="actualizacion">
+                Última actualización:
+                <span id="hora">--</span>
+            </p>
+
+        </div>
+            <br>
+            <br>
+
+            <button onclick="window.location.href='portafolio-trujillo/Trujillo.html'">
+                Portafolio Camac Salvador
+            </button>
+
